@@ -1,13 +1,99 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Add Book</title></head>
+<head>
+    <title>Add Book</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #e3f2fd, #f9f9f9);
+            color: #333;
+        }
+        .container {
+            max-width: 500px;
+            margin: 60px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 26px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #444;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 100%;
+            font-size: 14px;
+            transition: border 0.3s, box-shadow 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 6px rgba(0,123,255,0.3);
+        }
+        .btn {
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: #28a745;
+            color: white;
+            font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn:hover {
+            background: #218838;
+            transform: scale(1.05);
+        }
+        .back-link {
+            display: block;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 14px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
-<h2>Add Book</h2>
-<form th:action="@{/add}" th:object="${book}" method="post">
-    Title: <input type="text" th:field="*{title}"/><br/>
-    Author: <input type="text" th:field="*{author}"/><br/>
-    Price: <input type="text" th:field="*{price}"/><br/>
-    <button type="submit">Save</button>
-</form>
+<div class="container">
+    <h2>➕ Add New Book</h2>
+    <form th:action="@{/add}" th:object="${book}" method="post">
+        <div>
+            <label for="title">Title</label>
+            <input type="text" th:field="*{title}" id="title" placeholder="Enter book title"/>
+        </div>
+        <div>
+            <label for="author">Author</label>
+            <input type="text" th:field="*{author}" id="author" placeholder="Enter author name"/>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input type="text" th:field="*{price}" id="price" placeholder="Enter price"/>
+        </div>
+        <button type="submit" class="btn">💾 Save</button>
+    </form>
+    <a href="/" class="back-link">⬅ Back to Book List</a>
+</div>
 </body>
 </html>
